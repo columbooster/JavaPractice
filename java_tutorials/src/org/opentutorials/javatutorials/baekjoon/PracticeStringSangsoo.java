@@ -30,6 +30,8 @@ public class PracticeStringSangsoo {
 		} else {
 			System.out.print(b);
 		}
+		
+		System.out.println("Hello World!");
 
 	}
 
