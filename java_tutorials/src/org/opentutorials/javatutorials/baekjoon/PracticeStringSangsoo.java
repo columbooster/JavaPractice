@@ -32,6 +32,7 @@ public class PracticeStringSangsoo {
 		}
 		
 		System.out.println("Hello World!");
+		System.out.print(123);
 
 	}
 
