@@ -1,25 +1,44 @@
 package org.opentutorials.javatutorials.baekjoon;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.IOException;
-import java.util.StringTokenizer;
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.*;
 
 public class PracticeStringBasketball {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 		
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int[] alpha = new int[26];
+		ArrayList<Character> al = new ArrayList<>();
 		
-		StringTokenizer st = new StringTokenizer(br.readLine()," ");
+		Scanner sc = new Scanner(System.in);
 		
-		String A = st.nextToken();
-		String B = st.nextToken();
-
-		int C = Integer.parseInt(A);
-		int D = Integer.parseInt(B);
+		int cnt = sc.nextInt();
+		for(int i=0; i<cnt; i++) {
+			String s = sc.next();
+			int index = s.charAt(0) - 97; // 알파벳의 인덱스
+			alpha[index]++;
+			
+			// 같은 성을 가진 사람이 5명 이상이면, ArrayList 추가
+			if(alpha[index] >= 5) {
+				if(!al.contains((char)(index+97))) {
+					al.add((char)(index+97));
+				}
+			}
+		}
 		
-		System.out.print(C+D);
+		if(al.size() == 0) {
+			// 같은 성을 가진 사람이 5명이 안될 경우
+			System.out.print("PREDAJA");
+		} else {
+			// 같은 성을 가진 사람이 5명 이상일 경우, 사전 순 정렬
+			Collections.sort(al);
+			for(int i=0; i<al.size(); i++) {
+				System.out.print(al.get(i));
+			}
+		}
+		
+		
 
 	}
 
