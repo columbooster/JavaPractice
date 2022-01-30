@@ -25,7 +25,7 @@ public class MovieBook {
 		System.out.println("-------------------------");
 		
 		System.out.print("원하시는 좌석번호를 입력하세요(종료는 -1): ");
-		int book = input.nextInt();
+		int book = input.nextInt(); // 원하는 좌석번호 입력받기
 		
 		
 		if(book>0 && book <=10) { // 1~10사이의 좌석번호 입력받았을때
