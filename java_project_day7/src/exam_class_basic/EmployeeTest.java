@@ -16,6 +16,23 @@ public class EmployeeTest {
 
 	public static void main(String[] args) {
 		
+		Employee em1 = new Employee();
+		
+		em1.setEmployeeName("È«±æµ¿");
+		em1.setEmployeephoneNumber("010-1234-2345");
+		em1.setEmployeesalary(1000000);
+		
+		System.out.println(em1.printData());
+		
+	Employee em2 = new Employee();
+		
+		em2.setEmployeeName("È«Áøµ¿");
+		em2.setEmployeephoneNumber("010-1434-2645");
+		em2.setEmployeesalary(1200000);
+		
+		System.out.println(em2.printData());
+		
+		
 
 	}
 

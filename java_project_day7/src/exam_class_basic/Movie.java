@@ -14,8 +14,9 @@ public class Movie {
 		this.genre = genre;
 	}
 	
-	public String printData() {
-		return "영화제목: " + movieName + " 영화감독: " + movieDirector + " 런타임: " + movieRunTime + "분 장르: " + genre;
+	public String toString() {
+		//return "영화제목: " + movieName + " 영화감독: " + movieDirector + " 런타임: " + movieRunTime + "분 장르: " + genre;
+		return String.format("%s\t %s\t %d분\t %s", movieName, movieDirector, movieRunTime, genre);
 	}
 	
 	
