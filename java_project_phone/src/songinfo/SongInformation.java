@@ -8,13 +8,6 @@ public class SongInformation {
 		
 		song.show();
 		
-		String[] composer = new String[0];
-		
-		for(int i =0; i<song.getComposer().length; i++) {
-			System.out.print(composer[i]);
-		}
-		
-		System.out.println(song.getComposer());
 
 	}
 

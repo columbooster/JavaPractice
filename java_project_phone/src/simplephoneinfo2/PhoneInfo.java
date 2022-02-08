@@ -10,6 +10,13 @@ public class PhoneInfo {
 		
 	}
 	
+	public PhoneInfo(String name, String phoneNumber, String birthday) { 
+		this.name = name;
+		this.phoneNumber = phoneNumber;
+		this.birthday = birthday;
+		
+	}
+	
 	
 	// getter/setter 접근자/설정자  alt+shift+s
 	public String getName() {
@@ -37,8 +44,13 @@ public class PhoneInfo {
 	}
 	
 	public void showPhoneInfo() { // 출력 메소드
-		System.out.println("입력된정보 출력...");
-		System.out.println("name: "+name+"\nphone: "+phoneNumber+"\nbirth: "+birthday);
+		System.out.println("name : " + name);
+		System.out.println("honeNumber : " + phoneNumber);
+		
+		if(birthday != null) {
+			System.out.println("birth : " + birthday);
+		}
+		
 		System.out.println();
 	}
 	
