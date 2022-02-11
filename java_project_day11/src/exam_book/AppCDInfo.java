@@ -2,27 +2,27 @@ package exam_book;
 
 public class AppCDInfo extends CDInfo implements Lendable {
 
-	private String registerNo;
-	private String title;
-	private String borrower;
-	private String checkOutDate;
-	private int state;
+	//private String registerNo;
+	//private String title;
+	private String borrower; //대출인
+	private String checkOutDate; //대출일
+	private int state; // 대출상태 대출:1 반납:0
 	
 	public AppCDInfo(String registerNo, String title) {
 		super(registerNo, title);
-		this.registerNo = registerNo;
-		this.title = title;
 	}
 	
 	
 	@Override
 	public void checkOut(String borrower, String date) {
-		if(state !=0) // 대여중이라면 
-			return;		// return 값;  return; - 메서드를 종료하겠다는 의미.
+		if(state !=0) {
+			System.out.println("현재 대여중...");// 대여중이라면 
+			return; // return 값;  return; - 메서드를 종료하겠다는 의미.
+		}	
 		this.borrower = borrower;
 		this.checkOutDate = date;
 		this.state = 1; // 대출상태
-		System.out.println("*"+ title + " 이 대출되었습니다.");
+		System.out.println("*"+ getTitle() + " CD가 대출되었습니다.");
 		System.out.println("대출인 : " + this.borrower);
 		System.out.println("대출일 : " + this.checkOutDate + "\n");
 		
@@ -38,27 +38,15 @@ public class AppCDInfo extends CDInfo implements Lendable {
 		this.borrower = null;
 		this.checkOutDate = null;
 		this.state = 0; //반납상태
-		System.out.println("*"+ title + "이 반납되었습니다.");
+		System.out.println("*"+ getTitle() + "CD가 반납되었습니다.");
 		
 	}
-
-
-
-	public String getRegisterNo() {
-		return registerNo;
+	
+	public String toString() {
+		return "d";
 	}
 
-	public void setRegisterNo(String registerNo) {
-		this.registerNo = registerNo;
-	}
 
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
 
 	public String getBorrower() {
 		return borrower;

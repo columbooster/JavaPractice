@@ -2,12 +2,12 @@ package exam_book;
 
 public class SeperateVolume implements Lendable {
 	
-	private String requestNo;
-	private String bookTitle;
-	private String writer;
-	private String borrower;
-	private String checkOutDate;
-	private int state;
+	private String requestNo; //청구번호
+	private String bookTitle; // 제목 
+	private String writer; // 저자
+	private String borrower; // 대출인
+	private String checkOutDate; //대출일
+	private int state; //대출상태
 	
 	public SeperateVolume(String requestNo, String bookTitle, String writer) {
 		this.requestNo = requestNo;
@@ -37,7 +37,7 @@ public class SeperateVolume implements Lendable {
 		this.borrower = null;
 		this.checkOutDate = null;
 		this.state = 0; //반납상태
-		System.out.println("*"+ bookTitle + "이 반납되었습니다.");
+		System.out.println("*"+ bookTitle + "이(가) 반납되었습니다.");
 	}
 
 
