@@ -7,7 +7,7 @@ class SmartPhone {
 	private int price;
 	private int discountRate;
 
-	public SmartPhone() {
+	public SmartPhone() { 
 
 	}
 
@@ -23,11 +23,11 @@ class SmartPhone {
 		this.discountRate = discountRate;
 
 	}
-
+	// 할인가격 구하는 메소드
 	public int calculateDiscount() {
 		return price * (100 - discountRate) / 100;
 	}
-
+	//getter/ setter
 	public String getMaker() {
 		return maker;
 	}
@@ -61,7 +61,7 @@ class SmartPhone {
 	}
 
 }
-
+// main 클래스
 public class SmartPhoneTest {
 
 	public static void main(String[] args) {

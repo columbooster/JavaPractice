@@ -4,8 +4,11 @@ public class InheritanceTest2 {
 
 	public static void main(String[] args) {
 		
-		Employee e = new Employee("임꺽정", "경기도 성남시", "010-2324-3332", 5000000);
-		Manager m = new Manager("이수향", "서울특별시 강남구", "010-3342-3564", 3000000, 1500000, "팀장");
+		Employee[] e = {new Employee("임꺽정", "경기도 성남시", "010-2324-3332", 5000000),
+				new Manager("이수향", "서울특별시 강남구", "010-3342-3564", 3000000, 1500000, "팀장")};
+		
+		//Employee e = new Employee("임꺽정", "경기도 성남시", "010-2324-3332", 5000000);
+		//Manager m = new Manager("이수향", "서울특별시 강남구", "010-3342-3564", 3000000, 1500000, "팀장");
 		
 		/*
 		Employee e = new Employee();
@@ -28,8 +31,18 @@ public class InheritanceTest2 {
 		m.setJob("팀장");
 		*/
 		
-		System.out.println(e.toString());
-		System.out.println(m.toString());
+		//System.out.println(e.toString());
+		//System.out.println(m.toString());
+		
+		for(int i =0; i <e.length; i++) {
+			//System.out.println(e[i]);
+			System.out.println(e[i].toString());
+		}
+		
+		for(Employee ee : e) {
+			//System.out.println(ee.toString());
+			System.out.println(ee);
+		}
 
 	}
 
