@@ -39,11 +39,14 @@ public class FruitTest {
 		};
 		
 		
+		System.out.println("==============과일구입 목록==============");
 		int totalPrice = 0;
 		for(int i = 0; i<f.length; i++) {
-			totalPrice += totalPrice[i];
+			f[i].printFruit();
+			totalPrice += f[i].getPrice();
 		}
 		
+		System.out.println("----------------------------\n총금액 : " + totalPrice + "원\n할인후 결제 금액: " + (int)(totalPrice*0.85) + "원");
 
 	}
 
