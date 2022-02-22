@@ -16,7 +16,12 @@ public class StringTest {
 		System.out.println("파일명 : " + fileName);
 		//메서드 호출로 제어
 		
-		fileExtCheck(fileName);
+		//fileExtCheck(fileName);
+		
+		//(if(fileExtCheck(fileName)==false){
+		if(!fileExtCheck(fileName)) {// !(부정연산자. not) boolean. true -> false. false -> true
+			System.out.println("이미지 파일만 등록 가능합니다.");
+		}
 		
 	}
 	
@@ -33,19 +38,32 @@ public class StringTest {
 	}
 	
 	public static boolean fileExtCheck(String fileName) {
-		if(fileName.indexOf("gif")  != -1) {
-			return true;
-		}else if (fileName.indexOf("jpg")  != -1) {
-			return true;
-		}else if (fileName.indexOf("png")  != -1) {
-			return true;
-		}else if (fileName.indexOf("jpeg")  != -1) {
-			return true;
-		} else {
-			System.out.println("이미지 파일만 등록 가능합니다.");
+//		if(fileName.indexOf("gif")  != -1) {
+//			return true;
+//		}else if (fileName.indexOf("jpg")  != -1) {
+//			return true;
+//		}else if (fileName.indexOf("png")  != -1) {
+//			return true;
+//		}else if (fileName.indexOf("jpeg")  != -1) {
+//			return true;
+//		} else {
+//			System.out.println("이미지 파일만 등록 가능합니다.");
+//		}
+		
+		
+		String[] fileNameExt = {"gif","jpg", "png", "jpeg"}; //fileName
+		String ext = fileName.substring(
+				fileName.lastIndexOf(".")+1,
+				fileName.length()); // txt
+		
+		for (int i = 0; i < fileNameExt.length; i++) {
+			if(ext.equalsIgnoreCase(fileNameExt[i])) { //ext == fileNameExt[0] equalsIgnoreCase -->> 대소문자 구분없이 비교해준다!! 참조형은 ==로 주솟값비교
+				return true;
+			}
+			
 		}
 		
-		return true;
+		return false;
 	}
 
 }

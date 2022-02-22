@@ -1,5 +1,7 @@
 package exam_api_object;
 
+import java.util.Iterator;
+
 /*아이디와 나이를 필드로 가진 Member클래스를 생성한다.
  * 각각의 객체를 생성하여 나이가 같으면 두 객체는 "동등합니다."
  * 또는 나이가 다르면 두 객체는 "동등하지 않습니다"라고 출력할수있도록
@@ -18,7 +20,7 @@ public class MemberExample {
 		// 객체의 참조값 비교
 		System.out.println("m1==m2 = " + (m1 == m2));
 
-		//m3 = m1;
+		// m3 = m1;
 		System.out.println("m1==m3 = " + (m1 == m3));
 
 		// equals() 메서드 재정의 후 다시 확인.
