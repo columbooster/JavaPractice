@@ -4,7 +4,7 @@ package exam_map;
 
 import java.util.*;
 
-class Student {
+class Student implements Comparable<Student> {
 	private int sno; // ÇĞ¹ø
 	private String name; // ÀÌ¸§
 
@@ -32,6 +32,16 @@ class Student {
 	@Override
 	public String toString() {
 		return String.format("ÀÌ¸§ : %s ÇĞ¹ø : %d", name, sno);
+	}
+
+	@Override
+	public int compareTo(Student o) {
+		if (this.sno > o.sno)
+			return 1;
+		else if (this.sno == 0)
+			return 0;
+		else
+			return -1;
 	}
 
 }
@@ -68,6 +78,28 @@ public class HashMapExample2 {
 
 		System.out.println("ÃÑ Entry ¼ö : " + map.size());
 		System.out.println(map.toString());
+		
+		
+		// (¹øÈ£, Student °´Ã¼)¸¦ ÀúÀåÇÏ´Â Æ®¸®¸Ê »ı¼º
+		TreeMap<String, Student> tMap = new TreeMap<String, Student>();
+		tMap.put("1", new Student(94010001, "È«±æµ¿"));
+		tMap.put("4", new Student(95020001, "±èÈñÁø"));
+		tMap.put("2", new Student(97010001, "À±µµÈñ"));
+		tMap.put("3", new Student(99030003, "±èÃ¶¼ö"));
+		System.out.println(tMap.toString());
+		
+		TreeMap<Student, Integer> sMap = new TreeMap<Student, Integer>();
+		sMap.put(new Student(97010001, "À±µµÈñ"), 89);
+		sMap.put(new Student(95020001, "±èÈñÁø"), 90);
+		sMap.put(new Student(94010001, "È«±æµ¿"), 99);
+		sMap.put(new Student(99030003, "±èÃ¶¼ö"), 79);
+		
+		for (Map.Entry<Student, Integer> entry : sMap.entrySet()) {
+			Student key = entry.getKey();
+			Integer val = entry.getValue();
+			System.out.println("key = " + key + ", value = " + val);
+		}
+		
 
 	}
 

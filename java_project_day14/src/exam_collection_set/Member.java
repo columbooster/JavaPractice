@@ -1,6 +1,6 @@
 package exam_collection_set;
 
-public class Member {
+public class Member implements Comparable<Member> {
 
 	private String name;
 	private int age;
@@ -48,6 +48,16 @@ public class Member {
 //	}
 
 	// 이름 나이로 비교
+
+	@Override
+	public int compareTo(Member o) {
+		if (this.age > o.age)
+			return 1;
+		else if (this.age == o.age)
+			return 0;
+		else
+			return -1;
+	}
 
 	@Override
 	public int hashCode() {
