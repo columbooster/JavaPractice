@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 
 /*텍스트 파일(writer.txt)을 읽어서 앞에 라인 번호를 붙여서 출력하는 프로그램을 작성하라.
  * 라인 번호는 폭이 6이고 오른쪽 정렬되도록 line.txt 파일에 저장한다.
@@ -22,29 +23,38 @@ import java.io.OutputStream;
 public class LineTest {
 
 	public static void main(String[] args) {
-		
-		
-		try (BufferedReader br = new BufferedReader(new FileReader("writer.txt"));
-				BufferedWriter bw = new BufferedWriter(new FileWriter("line.txt"))) {
-			String str = null;
-			while((str = br.readLine()) != null) {
-				System.out.println(str);
-				bw.write(String.format("%6s", str));
-			}	
-			
-			
+		BufferedReader br = null;
+		PrintWriter pw = null;
+
+		try {
+			br = new BufferedReader(new FileReader("writer.txt"));
+			pw = new PrintWriter(new FileWriter("line.txt"));
+
+			int count = 0;
+			while (true) {
+				count++;
+				String line = br.readLine();
+				if (line == null)
+					break;
+				pw.format("%6d: %s\n", count, line);
+
+			}
+			pw.flush();
+
 		} catch (IOException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if (pw != null)
+					pw.close();
+				if (br != null)
+					br.close();
+
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
 		}
-		catch (Exception e) {
-			// TODO: handle exception
-		}
-		
-		
-		
-		
-		
-		
+
 	}
 
 }
