@@ -1,5 +1,7 @@
 package exam_game;
 
+import java.io.FileNotFoundException;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -46,9 +48,9 @@ public class CarGame extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(null);
 
-		(new MyThread("car1.gif", 100, 0)).start();
-		(new MyThread("car2.gif", 100, 50)).start();
-		(new MyThread("car3.gif", 100, 100)).start();
+		(new MyThread("image/car1.gif", 100, 0)).start();
+		(new MyThread("image/car2.gif", 100, 50)).start();
+		(new MyThread("image/car3.gif", 100, 100)).start();
 
 		setVisible(true);
 
