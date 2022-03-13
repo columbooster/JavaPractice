@@ -1,46 +1,30 @@
 package example;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.TreeMap;
+import java.util.TreeSet;
+
 public class example {
 
 	public static void main(String[] args) {
 		
-		Card card = new Card();
 		
-		String a = card.sum("djhufhef");
+		HashMap<Integer, String> map = new HashMap<Integer, String>();
 		
-		System.out.println(a);
+		map.put(1, "하나");
+		map.put(2, "둘");
+		map.put(3, "셋");
 		
-		Calculator ca = new Calculator();
+		System.out.println(map.keySet());
 		
-		int f = ca.hope(23, 3);
-		
-		System.out.println(f);
-		
-		System.out.println(ca.hope(23, 242));
+		System.out.println(map.entrySet());
 		
 		
 		
 		
-	}
-
-}
-
-
-class Card {
-	
-	public String sum(String s) {
-		return s;
-	}
-	
-
-	
-}
-
-
-class Calculator {
-	
-	public Integer hope(int a, int b) {
-		return a+b;
 		
 	}
 }
