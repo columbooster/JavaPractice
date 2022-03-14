@@ -1,7 +1,11 @@
 package exam_network;
 
 import java.io.*;
+import java.net.InetAddress;
 import java.net.Socket;
+
+//TCP 소켓을 사용하여 클라이언트와 서버를 연동하여 데이터를 주고 받으려고 한다.
+//서버의 IP : 192.168.77.35 포트번호 : 8888
 
 public class TcpClient {
 
@@ -11,9 +15,14 @@ public class TcpClient {
 		DataInputStream dis = null;
 		DataOutputStream dos = null;
 
+		int port = 8888;
+		String serverIP;
 		try {
-
-			client = new Socket("127.0.0.1", 8888);
+			serverIP = InetAddress.getLocalHost().getHostAddress();
+			// 명시된 서버의 IP가 사용되지 않았음. 지금 명시되어있는건 내 컴퓨터의 로컬 호스트 주소다.
+			// 명시된 문제에 따라 정상 처리하려면 serverIP 에 192.168.77.35로 명시해준다.
+			client = new Socket(serverIP, port);
+			// client = new Socket("192.168.77.35", port);
 			if (client.isConnected()) {
 				System.out.println(" 서버와 연결됨 ");
 			}

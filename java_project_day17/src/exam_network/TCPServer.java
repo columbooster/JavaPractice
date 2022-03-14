@@ -5,6 +5,9 @@ import java.io.DataOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+// TCP 소켓을 사용하여 클라이언트와 서버를 연동하여 데이터를 주고 받으려고 한다.
+// 서버의 IP : 192.168.77.35 포트번호 : 8888
+
 public class TCPServer {
 
 	public static void main(String[] args) {
