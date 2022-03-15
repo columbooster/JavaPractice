@@ -22,7 +22,7 @@ public class TcpClient {
 			// 명시된 서버의 IP가 사용되지 않았음. 지금 명시되어있는건 내 컴퓨터의 로컬 호스트 주소다.
 			// 명시된 문제에 따라 정상 처리하려면 serverIP 에 192.168.77.35로 명시해준다.
 			client = new Socket(serverIP, port);
-			// client = new Socket("192.168.77.35", port);
+			//client = new Socket("192.168.77.35", port);
 			if (client.isConnected()) {
 				System.out.println(" 서버와 연결됨 ");
 			}
