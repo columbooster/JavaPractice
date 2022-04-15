@@ -100,7 +100,9 @@ public class SubjectDAO {
 
 	/*
 	 * subjectInsert() 메서드 : 학과 테이블에 데이터 입력.
+	 * 
 	 * @param SubjectVO 클래스
+	 * 
 	 * @return boolean 자료형 리턴
 	 */
 	public boolean subjectInsert(SubjectVO svo) {
@@ -139,6 +141,204 @@ public class SubjectDAO {
 		}
 		return success;
 
+	}
+
+	/*
+	 * subjectUpdate() 메서드 : 학과 테이블에 데이터 수정.
+	 * 
+	 * @param SubjectVO 클래스
+	 * 
+	 * @return boolean 자료형 리턴
+	 */
+
+	public boolean subjectUpdate(SubjectVO svo) {
+		StringBuffer sql = new StringBuffer();
+		sql.append("update subject set s_name =? ");
+		sql.append("where no = ?");
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		boolean success = false;
+
+		try {
+			con = getConnection();
+
+			pstmt = con.prepareStatement(sql.toString());
+			pstmt.setString(1, svo.getS_name());
+			pstmt.setInt(2, svo.getNo());
+
+			int i = pstmt.executeUpdate();
+			if (i == 1) {
+				success = true;
+			}
+
+		} catch (SQLException e) {
+			System.out.println("수정에 문제가 있어 잠시 후에 다시 진행해 주세요.");
+			e.printStackTrace();
+		} catch (Exception e2) {
+			System.out.println("error = [ " + e2 + " ]");
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e2) {
+				System.out.println("디비 연동 해제 error = [" + e2 + " ]");
+			}
+		}
+		return success;
+
+	}
+
+	/*
+	 * subjectDelete() 메서드 : 학과 테이블에 데이터 삭제.
+	 * 
+	 * @param SubjectVO 클래스
+	 * 
+	 * @return boolean 자료형 리턴 참고사항 : 삭제실행화면에서 설명드린 부분 참조해 주세요(01~05를 제외한 나머지 데이터 삭제)
+	 * 매개변수로 SubjectVO로 명시해 주어도 되고 삭제할 일련번호로 명시하여도 된다.
+	 */
+	public boolean subjectDelete(SubjectVO svo) {
+		// public boolean subjectDelete(int no)
+		StringBuffer sql = new StringBuffer();
+		sql.append("delete from subject where no = ?");
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		boolean success = false;
+
+		try {
+			con = getConnection();
+
+			pstmt = con.prepareStatement(sql.toString());
+			// pstmt.setInt(1, no);
+			pstmt.setInt(1, svo.getNo());
+
+			int i = pstmt.executeUpdate();
+			if (i == 1) {
+				success = true;
+			}
+		} catch (SQLException e) {
+			System.out.println("삭제에 문제가 있어 잠시 후에 다시 진행해 주세요.");
+			e.printStackTrace();
+		} catch (Exception e) {
+			System.out.println("error = [ " + e + " ]");
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e2) {
+				System.out.println("디비 연동 해제 error = [ " + e2 + " ]");
+			}
+		}
+		return success;
+
+	}
+
+	/*
+	 * subjectSearch() 메서드 : 학과명 검색.
+	 * 
+	 * @param 학과명
+	 * 
+	 * @return ArrayList<SubjectVO> 자료형 리턴. 참고사항 : 추후 검색부분은 전체 조회 메서드에서 같이 처리하도록
+	 * 수정한다.
+	 */
+
+	public ArrayList<SubjectVO> getSubjectSearch(String s_name) {
+		StringBuffer sql = new StringBuffer();
+		sql.append("select no, s_num, s_name, from subject ");
+		sql.append("where s_name like ? ");
+		sql.append("order by no");
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		SubjectVO svo = null;
+		ArrayList<SubjectVO> list = new ArrayList<SubjectVO>();
+
+		try {
+			con = getConnection();
+
+			pstmt = con.prepareStatement(sql.toString());
+			pstmt.setString(1, "%" + s_name + "%");
+
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				svo = new SubjectVO();
+				svo.setNo(rs.getInt("no"));
+				svo.setS_num(rs.getString("s_num"));
+				svo.setS_name(rs.getString("s_name"));
+
+				list.add(svo);
+			}
+
+		} catch (SQLException e) {
+			System.out.println("검색에 문제가 있어 잠시 후에 다시 진행해 주세요.");
+			e.printStackTrace();
+		} catch (Exception e2) {
+			System.out.println("error = [ " + e2 + " ]");
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e2) {
+				System.out.println("디비 연동 해제 error = [ " + e2 + " ]");
+			}
+		}
+		return list;
+
+	}
+
+	/*
+	 * subjectNum() 메서드 : 학과번호 자동 구하기.
+	 * 
+	 * @return String 자료형 리턴.
+	 */
+
+	public String getSubjectNum() {
+		StringBuffer sql = new StringBuffer();
+		sql.append("select nvl(lpad(max(to_number(LTRIM(s_num,'0')))+1,2,'0'),'01') ");
+		sql.append("as subjectNum from subject");
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		String subjectNumber = "";
+
+		try {
+			con = getConnection();
+			pstmt = con.prepareStatement(sql.toString());
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				subjectNumber = rs.getString("subjectNum");
+			}
+
+		} catch (SQLException e) {
+			System.out.println("쿼리 getSubjectNum error = [ " + e + " ]");
+			e.printStackTrace();
+		} catch (Exception e2) {
+			System.out.println("error = [ " + e2 + " ]");
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				System.out.println("디비 연동 해제 error = [ " + e + " ]");
+			}
+		}
+		return subjectNumber;
 	}
 
 }
