@@ -11,6 +11,10 @@ public class Exammm {
 		int str = Integer.parseInt(sc.nextLine());
 		int num = sc.nextInt();
 		
+		if(str > num) {
+			str = 0;
+		}
+		
 		System.out.println(str + num);
 		
 	}
