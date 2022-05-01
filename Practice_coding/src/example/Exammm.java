@@ -18,6 +18,7 @@ public class Exammm {
 		System.out.println(str + num);
 		System.out.println(str);
 		System.out.println(num);
+		System.out.println(num+5);
 		
 	}
 
