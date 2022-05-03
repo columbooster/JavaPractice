@@ -10,6 +10,7 @@ public class TreeSetExam {
 	        treeSet.add("홍길동");
 	        treeSet.add("강감찬");
 	        treeSet.add("이순신");
+	        treeSet.add("정약용");
 
 	        for(String str : treeSet){
 	            System.out.println(str);  // 강감찬 이순신 홍길동// 오름찬순되어있음
