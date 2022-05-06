@@ -1,9 +1,9 @@
 package design_patten_proxy;
 
 public class Main {
-
+	// 프록시 패턴 구현
 	public static void main(String[] args) {
-
+		
 		Browser browser = new Browser("www.naver.com");
 		
 		browser.show();
