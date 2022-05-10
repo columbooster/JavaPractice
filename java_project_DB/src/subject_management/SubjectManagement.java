@@ -21,7 +21,7 @@ public class SubjectManagement {
 				System.out.println(sub.getS_name() + "\t");
 			}
 		} else {
-			System.out.println("학과 정보가 존재하지 않습니다.");
+			System.out.println("학과  정보가 존재하지 않습니다.");
 		}
 	}
 
