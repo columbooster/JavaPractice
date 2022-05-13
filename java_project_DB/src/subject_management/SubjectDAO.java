@@ -40,7 +40,7 @@ public class SubjectDAO {
 
 	private Connection getConnection() throws SQLException {
 		Connection con = DriverManager.getConnection(JDBC_URL, USER, PASSWD);
-		return con;
+		return con; 
 	}
 
 	/*
