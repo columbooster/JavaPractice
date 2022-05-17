@@ -14,7 +14,7 @@ public class Button {
 	}
 
 	public void addListener(IButtonListener buttonListener) {
-		this.buttonListener = buttonListener;
+		this.buttonListener = buttonListener; 
 	}
 
 }
