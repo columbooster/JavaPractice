@@ -20,6 +20,7 @@ public class Lottofor {
 				}
 			}
 			System.out.print(lotto[i] + " ");
+			
 		}
 		
 		
