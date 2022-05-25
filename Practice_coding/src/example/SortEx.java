@@ -17,7 +17,7 @@ public class SortEx {
 			System.out.print(nums[i]);
 		}
 		
-		
+		input.close();
 		
 	}
 
